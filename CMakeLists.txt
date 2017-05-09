@@ -1,0 +1,13 @@
+cmake_minimum_required(VERSION 3.8)
+project(cvUniText)
+
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -g -Wall -O3")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -Wall -O3")
+include_directories(/usr/include/freetype2/)
+find_package( OpenCV REQUIRED )
+
+add_library(cvunitext SHARED cvUniText.cpp)
+add_executable(main test.cpp)
+target_link_libraries(main cvunitext)
+target_link_libraries(cvunitext freetype ${OpenCV_LIBS})
