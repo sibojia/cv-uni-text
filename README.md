@@ -7,9 +7,9 @@ Modified based on [this opencv 1 library](https://github.com/buaabyl/cvPutUniTex
 
 This repo contains the source of the library and a pre-compiled version (with GCC 4.8.5, on our GPU servers). You can always try the pre-compiled version first, under `install/`. If it fails, compile as follows:
 
-1. Navigate to the root of this repo. Run `cmake .`. The minimum version of cmake required is 3.8.
+1. Navigate to the root of this repo. Run `cmake .`
 2. `make`
-3. Copy `cvUniText.hpp` and `libcvunitext.so` to your project.
+3. Copy `cvUniText.hpp` and `libcvunitext.so` to your project. Compile your project linking the library and opencv
 
 ## Example
 ```
