@@ -3,6 +3,8 @@
 A C++ library of drawing unicode text with user-defined font based on OpenCV 2.
 Modified based on [this opencv 1 library](https://github.com/buaabyl/cvPutUniText)
 
+Notice: Current implementations can't handle character spacing very well, so it's suggested to use a mono-spaced font to alleviate the problem. A mono-spaced font supporting Chinese is included in the `install/` directory. Will be fixed in the future.
+
 ## Compilation
 
 This repo contains the source of the library and a pre-compiled version (with GCC 4.8.5, on our GPU servers). You can always try the pre-compiled version first, under `install/`. If it fails, compile as follows:
