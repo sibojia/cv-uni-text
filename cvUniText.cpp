@@ -15,15 +15,15 @@ namespace uni_text {
 
         void SetParam(int font_size, float interval_ratio = 0.1, float whitespace_ratio = 0.3, float alpha = 1);
 
-        cv::Rect PutText(cv::Mat &img, const std::string &text, cv::Point &org,
-                         cv::Scalar &color, bool calc_size);
+        cv::Rect PutText(cv::Mat &img, const std::string &text, const cv::Point &org,
+                         const cv::Scalar &color, bool calc_size);
 
     private:
         cv::Rect _cvPutUniTextUCS2(cv::Mat &img, const std::u16string &text,
-                                   cv::Point &org, cv::Scalar &color, bool calc_size);
+                                   const cv::Point &org, const cv::Scalar &color, bool calc_size);
 
         double _cvPutUniChar(cv::Mat &img, char16_t wc,
-                             cv::Point &pos, cv::Scalar &color, bool calc_size);
+                             const cv::Point &pos, const cv::Scalar &color, bool calc_size);
 
         FT_Library m_library;
         FT_Face m_face;
@@ -43,8 +43,8 @@ void UniText::SetParam(int font_size, float interval_ratio, float whitespace_rat
     pimpl->SetParam(font_size, interval_ratio, whitespace_ratio, alpha);
 }
 
-cv::Rect UniText::PutText(cv::Mat& img, const std::string& text, cv::Point& org,
-  cv::Scalar& color, bool calc_size) {
+cv::Rect UniText::PutText(cv::Mat& img, const std::string& text, const cv::Point& org,
+                          const cv::Scalar& color, bool calc_size) {
     return pimpl->PutText(img, text, org, color, calc_size);
 }
 
@@ -82,7 +82,7 @@ void Impl::SetParam(int font_size, float interval_ratio, float whitespace_ratio,
 }
 
 double Impl::_cvPutUniChar(cv::Mat& img, char16_t wc,
-        cv::Point& pos, cv::Scalar& color, bool calc_size) {
+                           const cv::Point& pos, const cv::Scalar& color, bool calc_size) {
     // generate font bitmap from unicode
     FT_GlyphSlot ft_slot;
 //    int ft_ascender;
@@ -205,7 +205,7 @@ double Impl::_cvPutUniChar(cv::Mat& img, char16_t wc,
 }
 
 cv::Rect Impl::_cvPutUniTextUCS2(cv::Mat& img, const std::u16string& text,
-        cv::Point& org, cv::Scalar& color, bool calc_size) {
+        const cv::Point& org, const cv::Scalar& color, bool calc_size) {
     cv::Point pt0 = org;
     cv::Point pt1 = org;
     double offset;
@@ -224,8 +224,8 @@ cv::Rect Impl::_cvPutUniTextUCS2(cv::Mat& img, const std::u16string& text,
     return rect;
 }
 
-cv::Rect Impl::PutText(cv::Mat& img, const std::string& text, cv::Point &org,
-  cv::Scalar& color, bool calc_size) {
+cv::Rect Impl::PutText(cv::Mat& img, const std::string& text, const cv::Point &org,
+                       const cv::Scalar& color, bool calc_size) {
 //    std::wstring_convert<std::codecvt_utf8_utf16<char16_t>, char16_t> convert;
 //    std::u16string dest = convert.from_bytes(text);
     std::u16string dest;

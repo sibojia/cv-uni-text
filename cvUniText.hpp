@@ -31,8 +31,8 @@ namespace uni_text {
         /// \param calc_size: true -> return rect. False -> return rect and draw text.
         ///                   Useful e.g. when you want to draw a rectangle under the text
         /// \return The precise bounding box of the text in the image
-        cv::Rect PutText(cv::Mat &img, const std::string &utf8_text, cv::Point &org,
-                         cv::Scalar &color, bool calc_size);
+        cv::Rect PutText(cv::Mat &img, const std::string &utf8_text, const cv::Point &org,
+                         const cv::Scalar &color, bool calc_size);
 
     private:
         /// Hide implementations
