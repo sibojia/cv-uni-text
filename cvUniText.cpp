@@ -220,7 +220,7 @@ cv::Rect Impl::_cvPutUniTextUCS2(cv::Mat& img, const std::u16string& text,
     rect.width = pt1.x - pt0.x;
     rect.height = ascender - descender;
     rect.x = pt0.x;
-    rect.y = pt0.y - descender;
+    rect.y = pt0.y - ascender;
     return rect;
 }
 
